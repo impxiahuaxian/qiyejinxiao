@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.RkMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Rk" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rkbh" property="rkbh" jdbcType="VARCHAR" />
+    <result column="mc" property="mc" jdbcType="VARCHAR" />
+    <result column="fl" property="fl" jdbcType="VARCHAR" />
+    <result column="gy" property="gy" jdbcType="VARCHAR" />
+    <result column="kf" property="kf" jdbcType="VARCHAR" />
+    <result column="rkjg" property="rkjg" jdbcType="REAL" />
+    <result column="sl" property="sl" jdbcType="INTEGER" />
+    <result column="xsjg" property="xsjg" jdbcType="REAL" />
+    <result column="sj" property="sj" jdbcType="VARCHAR" />
+    <result column="xs" property="xs" jdbcType="INTEGER" />
+    <result column="th" property="th" jdbcType="INTEGER" />
+    <result column="kc" property="kc" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, rkbh, mc, fl, gy, kf, rkjg, sl, xsjg, sj, xs, th, kc
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.RkExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rk
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rk
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rk
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.RkExample" >
+    delete from rk
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Rk" >
+    insert into rk (id, rkbh, mc, 
+      fl, gy, kf, rkjg, 
+      sl, xsjg, sj, xs, 
+      th, kc)
+    values (#{id,jdbcType=INTEGER}, #{rkbh,jdbcType=VARCHAR}, #{mc,jdbcType=VARCHAR}, 
+      #{fl,jdbcType=VARCHAR}, #{gy,jdbcType=VARCHAR}, #{kf,jdbcType=VARCHAR}, #{rkjg,jdbcType=REAL}, 
+      #{sl,jdbcType=INTEGER}, #{xsjg,jdbcType=REAL}, #{sj,jdbcType=VARCHAR}, #{xs,jdbcType=INTEGER}, 
+      #{th,jdbcType=INTEGER}, #{kc,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Rk" >
+    insert into rk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rkbh != null" >
+        rkbh,
+      </if>
+      <if test="mc != null" >
+        mc,
+      </if>
+      <if test="fl != null" >
+        fl,
+      </if>
+      <if test="gy != null" >
+        gy,
+      </if>
+      <if test="kf != null" >
+        kf,
+      </if>
+      <if test="rkjg != null" >
+        rkjg,
+      </if>
+      <if test="sl != null" >
+        sl,
+      </if>
+      <if test="xsjg != null" >
+        xsjg,
+      </if>
+      <if test="sj != null" >
+        sj,
+      </if>
+      <if test="xs != null" >
+        xs,
+      </if>
+      <if test="th != null" >
+        th,
+      </if>
+      <if test="kc != null" >
+        kc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rkbh != null" >
+        #{rkbh,jdbcType=VARCHAR},
+      </if>
+      <if test="mc != null" >
+        #{mc,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null" >
+        #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="gy != null" >
+        #{gy,jdbcType=VARCHAR},
+      </if>
+      <if test="kf != null" >
+        #{kf,jdbcType=VARCHAR},
+      </if>
+      <if test="rkjg != null" >
+        #{rkjg,jdbcType=REAL},
+      </if>
+      <if test="sl != null" >
+        #{sl,jdbcType=INTEGER},
+      </if>
+      <if test="xsjg != null" >
+        #{xsjg,jdbcType=REAL},
+      </if>
+      <if test="sj != null" >
+        #{sj,jdbcType=VARCHAR},
+      </if>
+      <if test="xs != null" >
+        #{xs,jdbcType=INTEGER},
+      </if>
+      <if test="th != null" >
+        #{th,jdbcType=INTEGER},
+      </if>
+      <if test="kc != null" >
+        #{kc,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.RkExample" resultType="java.lang.Integer" >
+    select count(*) from rk
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update rk
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.rkbh != null" >
+        rkbh = #{record.rkbh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mc != null" >
+        mc = #{record.mc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fl != null" >
+        fl = #{record.fl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gy != null" >
+        gy = #{record.gy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kf != null" >
+        kf = #{record.kf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rkjg != null" >
+        rkjg = #{record.rkjg,jdbcType=REAL},
+      </if>
+      <if test="record.sl != null" >
+        sl = #{record.sl,jdbcType=INTEGER},
+      </if>
+      <if test="record.xsjg != null" >
+        xsjg = #{record.xsjg,jdbcType=REAL},
+      </if>
+      <if test="record.sj != null" >
+        sj = #{record.sj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xs != null" >
+        xs = #{record.xs,jdbcType=INTEGER},
+      </if>
+      <if test="record.th != null" >
+        th = #{record.th,jdbcType=INTEGER},
+      </if>
+      <if test="record.kc != null" >
+        kc = #{record.kc,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update rk
+    set id = #{record.id,jdbcType=INTEGER},
+      rkbh = #{record.rkbh,jdbcType=VARCHAR},
+      mc = #{record.mc,jdbcType=VARCHAR},
+      fl = #{record.fl,jdbcType=VARCHAR},
+      gy = #{record.gy,jdbcType=VARCHAR},
+      kf = #{record.kf,jdbcType=VARCHAR},
+      rkjg = #{record.rkjg,jdbcType=REAL},
+      sl = #{record.sl,jdbcType=INTEGER},
+      xsjg = #{record.xsjg,jdbcType=REAL},
+      sj = #{record.sj,jdbcType=VARCHAR},
+      xs = #{record.xs,jdbcType=INTEGER},
+      th = #{record.th,jdbcType=INTEGER},
+      kc = #{record.kc,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Rk" >
+    update rk
+    <set >
+      <if test="rkbh != null" >
+        rkbh = #{rkbh,jdbcType=VARCHAR},
+      </if>
+      <if test="mc != null" >
+        mc = #{mc,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null" >
+        fl = #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="gy != null" >
+        gy = #{gy,jdbcType=VARCHAR},
+      </if>
+      <if test="kf != null" >
+        kf = #{kf,jdbcType=VARCHAR},
+      </if>
+      <if test="rkjg != null" >
+        rkjg = #{rkjg,jdbcType=REAL},
+      </if>
+      <if test="sl != null" >
+        sl = #{sl,jdbcType=INTEGER},
+      </if>
+      <if test="xsjg != null" >
+        xsjg = #{xsjg,jdbcType=REAL},
+      </if>
+      <if test="sj != null" >
+        sj = #{sj,jdbcType=VARCHAR},
+      </if>
+      <if test="xs != null" >
+        xs = #{xs,jdbcType=INTEGER},
+      </if>
+      <if test="th != null" >
+        th = #{th,jdbcType=INTEGER},
+      </if>
+      <if test="kc != null" >
+        kc = #{kc,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Rk" >
+    update rk
+    set rkbh = #{rkbh,jdbcType=VARCHAR},
+      mc = #{mc,jdbcType=VARCHAR},
+      fl = #{fl,jdbcType=VARCHAR},
+      gy = #{gy,jdbcType=VARCHAR},
+      kf = #{kf,jdbcType=VARCHAR},
+      rkjg = #{rkjg,jdbcType=REAL},
+      sl = #{sl,jdbcType=INTEGER},
+      xsjg = #{xsjg,jdbcType=REAL},
+      sj = #{sj,jdbcType=VARCHAR},
+      xs = #{xs,jdbcType=INTEGER},
+      th = #{th,jdbcType=INTEGER},
+      kc = #{kc,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectByBh" resultType="com.pojo.Rk" parameterType="java.lang.String" >
+    select
+    *
+    from rk
+    where rkbh = #{rkbh,jdbcType=VARCHAR}
+  </select>
+  <select id="getSame" resultType="java.lang.String" parameterType="java.lang.String" >
+      SELECT id
+      FROM rk
+      WHERE rkbh = #{rkbh}
+  </select>
+  <select id="upgetSame" resultType="java.lang.String" parameterType="Rk" >
+      SELECT id
+      FROM rk
+      WHERE rkbh = #{rkbh} AND id!=#{id}
+  </select>
+</mapper>
